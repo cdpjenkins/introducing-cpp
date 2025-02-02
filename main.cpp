@@ -1,5 +1,6 @@
 // #include <print>
 #include <cassert>
+#include <iostream>
 #include <istream>
 #include <sstream>
 
@@ -15,7 +16,6 @@ bool get_number(std::istream & input_stream, double & number) {
 }
 
 void test_code() {
-
     double value{};
 
     std::stringstream some_input{"1"};
@@ -32,4 +32,12 @@ void test_code() {
 int main()
 {
     test_code();
+
+    double number{};
+
+    std::cout << "Please enter a number." << std::endl << ">";
+    const bool ok = get_number(std::cin, number);
+    if (ok) {
+        std::cout << "Got " << number << ", thanks!" << std::endl;
+    }
 }
