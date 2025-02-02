@@ -11,5 +11,9 @@
 int main()
 {
     // read_numbers_with_rc_main();
-    read_numbers_with_exceptions_main();
+    try {
+        read_numbers_with_exceptions_main();
+    } catch (const std::exception& e) {
+        std::cout << "Something went wrong! Oh no!" << std::endl;
+    }
 }
