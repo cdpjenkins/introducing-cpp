@@ -2,6 +2,7 @@
 #include <cassert>
 #include <iostream>
 #include <istream>
+#include <limits>
 #include <sstream>
 
 [[nodiscard]]
@@ -11,6 +12,9 @@ bool get_number(std::istream & input_stream, double & number) {
     if (input_stream) {
         return true;
     } else {
+        input_stream.clear();
+        input_stream.ignore(std::numeric_limits<std::stringstream>::max().get(), '\n');
+
         return false;
     }
 }
@@ -35,7 +39,7 @@ int main()
 
     double number{};
 
-    std::cout << "Please enter a number." << std::endl << ">";
+    std::cout << "Please enter a number." << std::endl << "> ";
     const bool ok = get_number(std::cin, number);
     if (ok) {
         std::cout << "Got " << number << ", thanks!" << std::endl;
