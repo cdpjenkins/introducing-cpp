@@ -17,7 +17,7 @@ enum class ExampleToRun {
 
 int main()
 {
-    auto example_to_run = ExampleToRun::READ_NUMBERS_WITH_EXPECTATION;
+    auto example_to_run = ExampleToRun::READ_NUMBERS_WITH_EXCEPTION;
 
     switch (example_to_run) {
         case ExampleToRun::READ_NUMBERS_WITH_RC:
