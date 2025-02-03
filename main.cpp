@@ -5,15 +5,32 @@
 #include <limits>
 #include <sstream>
 
+#include "input_with_expectation.hpp"
 #include "read_numbers_with_rc.hpp"
 #include "read_numbers_using_exceptions.hpp"
 
+enum class ExampleToRun {
+    READ_NUMBERS_WITH_RC,
+    READ_NUMBERS_WITH_EXCEPTION,
+    READ_NUMBERS_WITH_EXPECTATION
+};
+
 int main()
 {
-    // read_numbers_with_rc_main();
-    try {
-        read_numbers_with_exceptions_main();
-    } catch (const std::exception& e) {
-        std::cout << "Something went wrong! Oh no!" << std::endl;
+    auto example_to_run = ExampleToRun::READ_NUMBERS_WITH_EXPECTATION;
+
+    switch (example_to_run) {
+        case ExampleToRun::READ_NUMBERS_WITH_RC:
+            read_numbers_with_rc_main();
+            break;
+        case ExampleToRun::READ_NUMBERS_WITH_EXCEPTION:
+            try {
+                read_numbers_with_exceptions_main();
+            } catch (const std::exception& e) {
+                std::cout << "Something went wrong! Oh no!" << std::endl;
+            }
+            break;
+        case ExampleToRun::READ_NUMBERS_WITH_EXPECTATION:
+            input_with_expectation_main();
     }
 }
