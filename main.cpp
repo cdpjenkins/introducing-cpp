@@ -17,18 +17,14 @@ enum class ExampleToRun {
 
 int main()
 {
-    auto example_to_run = ExampleToRun::READ_NUMBERS_WITH_EXCEPTION;
+    auto example_to_run = ExampleToRun::READ_NUMBERS_WITH_EXPECTATION;
 
     switch (example_to_run) {
         case ExampleToRun::READ_NUMBERS_WITH_RC:
             read_numbers_with_rc_main();
             break;
         case ExampleToRun::READ_NUMBERS_WITH_EXCEPTION:
-            try {
-                read_numbers_with_exceptions_main();
-            } catch (const std::exception& e) {
-                std::cout << "Something went wrong! Oh no!" << std::endl;
-            }
+            read_numbers_with_exceptions_main();
             break;
         case ExampleToRun::READ_NUMBERS_WITH_EXPECTATION:
             input_with_expectation_main();

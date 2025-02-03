@@ -19,11 +19,9 @@ static std::expected<double, std::string> get_number(std::istream& input_stream)
 void input_with_expectation_main() {
     std::cout << "Please enter a number." << std::endl << "> ";
     auto number = get_number(std::cin);
-    if (number.has_value()) {
+    if (number) {
         std::cout << "Got " << number.value() << std::endl;
     } else {
         std::cout << number.error() << std::endl;
     }
 }
-
-
