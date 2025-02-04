@@ -8,16 +8,18 @@
 #include "input_with_expectation.hpp"
 #include "read_numbers_with_rc.hpp"
 #include "read_numbers_using_exceptions.hpp"
+#include "loops.hpp"
 
 enum class ExampleToRun {
     READ_NUMBERS_WITH_RC,
     READ_NUMBERS_WITH_EXCEPTION,
-    READ_NUMBERS_WITH_EXPECTATION
+    READ_NUMBERS_WITH_EXPECTATION,
+    LOOPS
 };
 
 int main()
 {
-    auto example_to_run = ExampleToRun::READ_NUMBERS_WITH_EXPECTATION;
+    auto example_to_run = ExampleToRun::LOOPS;
 
     switch (example_to_run) {
         case ExampleToRun::READ_NUMBERS_WITH_RC:
@@ -28,5 +30,9 @@ int main()
             break;
         case ExampleToRun::READ_NUMBERS_WITH_EXPECTATION:
             input_with_expectation_main();
+            break;
+        case ExampleToRun::LOOPS:
+            loop_main();
+            break;
     }
 }

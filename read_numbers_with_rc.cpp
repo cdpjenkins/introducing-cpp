@@ -12,7 +12,7 @@
 
 
 [[nodiscard]]
-bool get_number(std::istream & input_stream, double & number) {
+static bool get_number(std::istream & input_stream, double & number) {
     input_stream >> number;
 
     if (input_stream) {
