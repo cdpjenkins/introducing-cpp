@@ -35,4 +35,9 @@ void loop_main() {
 
         ++count;
     }
+
+    std::cout << "Look out, here are the numbers that you just entered:" << std::endl;
+    for (const auto & number : numbers) {
+        std::cout << number << std::endl;
+    }
 }
