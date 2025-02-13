@@ -1,9 +1,8 @@
 // #include <print>
-#include <cassert>
+
+#include <algorithm>
 #include <iostream>
 #include <istream>
-#include <limits>
-#include <sstream>
 
 #include "input.hpp"
 #include "input_with_expectation.hpp"
@@ -58,6 +57,11 @@ int main()
         case ExampleToRun::GET_PRICES:
             auto prices = get_prices(std::cin);
 
+            if (!prices.empty()) {
+                auto result = std::ranges::minmax(prices);
+                std::cout << "min: " << result.min << std::endl;
+                std::cout << "max: " << result.max << std::endl;
+            }
             for (auto price : prices) {
                 std::cout << price << " ";
             }
