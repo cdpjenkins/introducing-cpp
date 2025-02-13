@@ -8,4 +8,5 @@ add_executable(introducing_cpp main.cpp
         read_numbers_using_exceptions.cpp
         input_with_expectation.cpp
         loops.cpp
-        vector_input.cpp)
+        vector_input.cpp
+        input.cpp)

@@ -5,6 +5,7 @@
 #include <limits>
 #include <sstream>
 
+#include "input.hpp"
 #include "input_with_expectation.hpp"
 #include "read_numbers_with_rc.hpp"
 #include "read_numbers_using_exceptions.hpp"
@@ -16,12 +17,27 @@ enum class ExampleToRun {
     READ_NUMBERS_WITH_EXCEPTION,
     READ_NUMBERS_WITH_EXPECTATION,
     LOOPS,
-    VECTORS
+    VECTORS,
+    GET_PRICES
 };
+
+static std::vector<double> get_prices(std::istream & input_stream) {
+    std::cout << "Please enter some numbers." << std::endl << "> ";
+
+    std::vector<double> numbers{};
+    auto number = stock_prices::get_number(input_stream);
+    while (number.has_value()) {
+        numbers.push_back(number.value());
+        std::cout << "> ";
+        number = stock_prices::get_number(input_stream);
+    }
+
+    return numbers;
+}
 
 int main()
 {
-    auto example_to_run = ExampleToRun::VECTORS;
+    auto example_to_run = ExampleToRun::GET_PRICES;
 
     switch (example_to_run) {
         case ExampleToRun::READ_NUMBERS_WITH_RC:
@@ -38,6 +54,14 @@ int main()
         break;
         case ExampleToRun::VECTORS:
             vector_input_main();
-        break;
+            break;
+        case ExampleToRun::GET_PRICES:
+            auto prices = get_prices(std::cin);
+
+            for (auto price : prices) {
+                std::cout << price << " ";
+            }
+
+            break;
     }
 }
