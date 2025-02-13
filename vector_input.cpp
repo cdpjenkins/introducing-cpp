@@ -48,6 +48,7 @@ void vector_input_main() {
     {
         numbers.push_back(number.value());
         std::cout << "Got " << number.value() << "\n";
+        std::cout << "Capacity is " << numbers.capacity() << std::endl;
 
         number = get_number(std::cin);
     }
@@ -56,4 +57,13 @@ void vector_input_main() {
     for (const auto & number : numbers) {
         std::cout << number << std::endl;
     }
+
+    numbers.erase(numbers.begin());
+    std::cout << "we just erased the first element, let's see what we have left: " << std::endl;
+    std::cout << "[";
+    for (const auto & number : numbers) {
+        std::cout << number << ", ";
+    }
+    std::cout << "]" << std::endl;
+
 }
