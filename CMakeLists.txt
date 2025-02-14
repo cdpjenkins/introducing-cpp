@@ -9,4 +9,5 @@ add_executable(introducing_cpp main.cpp
         input_with_expectation.cpp
         loops.cpp
         vector_input.cpp
-        input.cpp)
+        input.cpp
+        analysis.cpp)

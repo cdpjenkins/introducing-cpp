@@ -4,6 +4,7 @@
 #include <iostream>
 #include <istream>
 
+#include "analysis.hpp"
 #include "input.hpp"
 #include "input_with_expectation.hpp"
 #include "read_numbers_with_rc.hpp"
@@ -65,6 +66,10 @@ int main()
             for (auto price : prices) {
                 std::cout << price << " ";
             }
+            std::cout << std::endl;
+
+            auto invalid = std::ranges::count_if(prices, stock_prices::negative);
+            std::cout << invalid << " prices below zero" << std::endl;
 
             break;
     }
