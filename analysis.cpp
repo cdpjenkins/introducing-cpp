@@ -1,7 +1,10 @@
 #include "analysis.hpp"
 
+#include <numeric>
 #include <vector>
 
-double average(const std::vector<double>& prices) {
-    return 0.0;
+namespace stock_prices {
+    double average(const std::vector<double> &prices) {
+        return std::accumulate(prices.begin(), prices.end(), 0.0) / prices.size();
+    }
 }

@@ -7,5 +7,5 @@ namespace stock_prices {
         return value < 0.0;
     }
 
-    double average(const std::vector<double>& prices)
+    double average(const std::vector<double>& prices);
 }

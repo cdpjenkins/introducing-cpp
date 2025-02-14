@@ -74,6 +74,8 @@ int main()
             auto erased = std::erase_if(prices, stock_prices::negative);
             std::cout << "erased " << erased << " prices"  << std::endl;
 
+            std::cout << "Average is " << stock_prices::average(prices) << std::endl;
+
             break;
     }
 }
