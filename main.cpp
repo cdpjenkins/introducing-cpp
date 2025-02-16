@@ -63,6 +63,9 @@ int main()
                 std::cout << "min: " << result.min << std::endl;
                 std::cout << "max: " << result.max << std::endl;
             }
+
+            std::sort(prices.begin(), prices.end());
+
             for (auto price : prices) {
                 std::cout << price << " ";
             }
