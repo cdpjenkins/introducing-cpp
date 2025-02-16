@@ -64,7 +64,7 @@ int main()
                 std::cout << "max: " << result.max << std::endl;
             }
 
-            std::sort(prices.begin(), prices.end());
+            std::ranges::sort(prices, std::ranges::greater{});
 
             for (auto price : prices) {
                 std::cout << price << " ";
