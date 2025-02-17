@@ -74,7 +74,7 @@ int main()
             auto invalid = std::ranges::count_if(prices, stock_prices::negative);
             std::cout << invalid << " prices below zero" << std::endl;
 
-            auto erased = std::erase_if(prices, stock_prices::negative);
+            auto erased = std::erase_if(prices, [](double x) { return x < 0.0; });
             std::cout << "erased " << erased << " prices"  << std::endl;
 
             std::cout << "Average is " << stock_prices::average(prices) << std::endl;
