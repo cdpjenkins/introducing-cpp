@@ -79,6 +79,13 @@ int main()
 
             std::cout << "Average is " << stock_prices::average(prices) << std::endl;
 
+            std::cout << "Sorted:" << std::endl;
+            std::ranges::sort(prices, std::ranges::greater{});
+            for (auto price : prices) {
+                std::cout << price << " ";
+            }
+            std::cout << std::endl;
+
             break;
     }
 }
