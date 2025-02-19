@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <iostream>
 #include <istream>
+#include <ranges>
 
 #include "analysis.hpp"
 #include "input.hpp"
@@ -74,15 +75,22 @@ int main()
             auto invalid = std::ranges::count_if(prices, stock_prices::negative);
             std::cout << invalid << " prices below zero" << std::endl;
 
-            auto erased = std::erase_if(prices, [](double x) { return x < 0.0; });
-            std::cout << "erased " << erased << " prices"  << std::endl;
-
             std::cout << "Average is " << stock_prices::average(prices) << std::endl;
 
             std::cout << "Sorted:" << std::endl;
             std::ranges::sort(prices, std::ranges::greater{});
+
+            std::cout << "All prices sorted" << std::endl;
             for (auto price : prices) {
                 std::cout << price << " ";
+            }
+            std::cout << std::endl;
+
+            auto valid_prices = std::views::filter(prices, [](auto price) { return price >= 0; });
+
+            std::cout << "Valid prices sorted" << std::endl;
+            for (auto valid_price : valid_prices) {
+                std::cout << valid_price << " ";
             }
             std::cout << std::endl;
 
