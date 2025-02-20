@@ -94,6 +94,9 @@ int main()
             }
             std::cout << std::endl;
 
+            const double mean = stock_prices::average(std::ranges::to<std::vector>(valid_prices));
+            std::cout << "Mean: " << mean << std::endl;
+
             break;
     }
 }
