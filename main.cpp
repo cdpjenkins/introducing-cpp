@@ -65,7 +65,7 @@ int main()
                 std::cout << "max: " << result.max << std::endl;
             }
 
-            std::ranges::sort(prices, std::ranges::greater{});
+            // std::ranges::sort(prices, std::ranges::greater{});
 
             for (auto price : prices) {
                 std::cout << price << " ";
@@ -77,25 +77,34 @@ int main()
 
             std::cout << "Average is " << stock_prices::average(prices) << std::endl;
 
-            std::cout << "Sorted:" << std::endl;
-            std::ranges::sort(prices, std::ranges::greater{});
+            // std::cout << "Sorted:" << std::endl;
+            // std::ranges::sort(prices, std::ranges::greater{});
 
-            std::cout << "All prices sorted" << std::endl;
-            for (auto price : prices) {
-                std::cout << price << " ";
-            }
-            std::cout << std::endl;
+            // std::cout << "All prices sorted" << std::endl;
+            // for (auto price : prices) {
+            //     std::cout << price << " ";
+            // }
+            // std::cout << std::endl;
 
             auto valid_prices = std::views::filter(prices, [](auto price) { return price >= 0; });
 
-            std::cout << "Valid prices sorted" << std::endl;
+            std::cout << "Valid prices" << std::endl;
             for (auto valid_price : valid_prices) {
                 std::cout << valid_price << " ";
             }
             std::cout << std::endl;
 
-            const double mean = stock_prices::average(std::ranges::to<std::vector>(valid_prices));
+            auto valid_prices_as_vector = std::ranges::to<std::vector>(valid_prices);
+            const double mean = stock_prices::average(valid_prices_as_vector);
             std::cout << "Mean: " << mean << std::endl;
+
+            double potential_profit = stock_prices::profit_on_first_uptick(valid_prices_as_vector);
+            std::cout << "Potential profit: " << potential_profit << std::endl;
+
+            const double required_profit = 1.75;
+            bool possible = stock_prices::required_profit_possible(valid_prices_as_vector, required_profit);
+
+            std::cout << "Required profit possible: " << std::boolalpha << possible << std::endl;
 
             break;
     }
