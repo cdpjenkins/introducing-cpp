@@ -19,7 +19,8 @@ enum class ExampleToRun {
     READ_NUMBERS_WITH_EXPECTATION,
     LOOPS,
     VECTORS,
-    GET_PRICES
+    GET_PRICES,
+    VIEWS_EXPERIMENT
 };
 
 static std::vector<double> get_prices(std::istream & input_stream) {
@@ -38,7 +39,7 @@ static std::vector<double> get_prices(std::istream & input_stream) {
 
 int main()
 {
-    auto example_to_run = ExampleToRun::GET_PRICES;
+    auto example_to_run = ExampleToRun::VIEWS_EXPERIMENT;
 
     switch (example_to_run) {
         case ExampleToRun::READ_NUMBERS_WITH_RC:
@@ -56,6 +57,22 @@ int main()
         case ExampleToRun::VECTORS:
             vector_input_main();
             break;
+        case ExampleToRun::VIEWS_EXPERIMENT: {
+            const std::vector prices{3.76, 1.5, -1.0, 3.0, 4.0, -2.0, 99.4};
+            const double required_price = 4.75;
+            auto non_negative = [](double price) { return price >= 0.0; };
+            auto too_cheap = [required_price](double x) { return x <= required_price; };
+
+            auto no_good = prices | std::views::filter(non_negative)
+                                                 | std::views::take_while(too_cheap);
+
+            std::cout << "Too cheap:" << std::endl;
+            for (auto price : no_good) {
+                std::cout << price << " ";
+            }
+
+            break;
+        }
         case ExampleToRun::GET_PRICES:
             auto prices = get_prices(std::cin);
 
